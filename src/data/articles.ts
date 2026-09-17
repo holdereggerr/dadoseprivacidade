@@ -8,6 +8,39 @@ export const DEFAULT_AUTHOR = {
 
 export const INITIAL_ARTICLES: Article[] = [
   {
+    id: 'artigo-11',
+    slug: 'agora-todos-os-desenvolvedores-sao-gestores-a-era-dos-agentes-de-codigo',
+    title: 'Agora todos os desenvolvedores são gestores: A nova dinâmica da IA e dos Agentes de Código',
+    subtitle: 'Como a proliferação de agentes autônomos de programação transforma a governança de software e exige novos papéis executivos.',
+    category: 'IA & Shadow AI',
+    tags: ['IA Generativa', 'Agentes de Código', 'Governança de IA', 'Desenvolvimento de Software', 'Engenharia de Software'],
+    summary: 'Com a ascensão da codificação baseada em agentes de IA, o desenvolvedor deixa de apenas escrever linhas de código para se tornar um gestor de agentes sintéticos. Essa mudança altera radicalmente a supervisão técnica, a responsabilidade pelas entregas e os riscos operacionais.',
+    briefing: 'Analisar a transição do desenvolvimento de código tradicional para a gestão de agentes de IA e seus impactos na governança corporativa.',
+    publishedAt: '2026-09-17',
+    updatedAt: '2026-09-17',
+    readingTimeMinutes: 5,
+    isFeatured: true,
+    isMustRead: true,
+    author: DEFAULT_AUTHOR,
+    content: {
+      oQueAconteceu: 'O avanço dos agentes de codificação (agentic coding) transformou a engenharia de software: desenvolvedores estão escrevendo cada vez menos código manual e passando a orientar, supervisionar e validar o código produzido por agentes autônomos de IA.',
+      oQueIssoSignifica: 'Na prática, todo desenvolvedor — mesmo os em início de carreira — passa a exercer um papel de gestão. O agente de IA opera como um liderado sintético: necessita de diretrizes claras, contexto isolado, pontos de checagem (checkpoints) e revisão criteriosa antes de ir para produção.',
+      porQueIssoImporta: 'Embora a velocidade de desenvolvimento aumente significativamente, a natureza dos riscos corporativos muda. Agentes cometem erros, introduzem falhas sutis de arquitetura e podem inserir vulnerabilidades de segurança se operarem sem um rigoroso framework de supervisão.',
+      qualEORisco: 'Aprovação cega de código sintético (sem auditoria adequada), introdução inadvertida de bugs em produção, violação de direitos autorais/licenças de código aberto e incerteza jurídica sobre a responsabilidade técnica pelas entregas.',
+      oQueDeveriaTerSidoPreparado: 'Diretrizes formais de governança para o uso de agentes de IA na engenharia, ambientes isolados (sandboxes) para execução de testes e esteiras automatizadas de auditoria de segurança e qualidade de código.',
+      oQueFazerAgora: 'Reestruturar a matriz de competências da equipe de tecnologia, treinando desenvolvedores na gestão e auditoria de agentes, e reforçar os pipelines de CI/CD com análises estáticas e testes de vulnerabilidade.',
+      perguntasParaExecutivos: [
+        'Nossa empresa possui políticas claras que diferenciam o autocompletar simples da utilização de agentes autônomos com acesso aos repositórios principais?',
+        'Como a diretoria de TI garante que os códigos gerados por agentes sintéticos passam por revisão e auditoria antes da implementação em ambientes críticos?',
+        'O Conselho de Administração tem visibilidade de como a proliferação de código gerado por IA afeta o passivo de segurança e a propriedade intelectual da companhia?'
+      ],
+      fontesEReferencias: [
+        { title: 'InfoWorld - Software developers are all managers now (Nick Hodges)', url: 'https://www.infoworld.com/article/4222371/software-developers-are-all-managers-now.html' },
+        { title: 'Zide Software - Managing Coding Agents as Synthetic Workforce' }
+      ]
+    }
+  },
+  {
     id: 'artigo-1',
     slug: 'sua-empresa-tem-backup-mas-conseguiria-sobreviver-a-um-desastre-digital',
     title: 'Sua empresa tem backup. Mas conseguiria sobreviver a um desastre digital?',
@@ -19,7 +52,7 @@ export const INITIAL_ARTICLES: Article[] = [
     publishedAt: '2026-08-20',
     updatedAt: '2026-08-21',
     readingTimeMinutes: 6,
-    isFeatured: true,
+    isFeatured: false,
     isMustRead: true,
     author: DEFAULT_AUTHOR,
     content: {
@@ -339,3 +372,5 @@ export const INITIAL_ARTICLES: Article[] = [
     }
   }
 ];
+
+
