@@ -8,31 +8,31 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        paper: {
-          50: '#FCFBF9',
-          100: '#FAF9F6',
-          200: '#F3F1EC',
-          300: '#E7E4DC',
-          400: '#D5D1C5',
-        },
         brand: {
-          dark: '#111827',
-          charcoal: '#1E293B',
-          muted: '#4B5563',
-          red: '#8B1E1E',
-          'red-dark': '#6F1818',
-          'red-light': '#A52A2A',
-          'red-subtle': '#FAF0F0',
-          accent: '#991B1B',
+          navy: '#16324F',      // Azul profundo de autoridade
+          teal: '#13A89E',      // Verde-água de ação/destaque
+          'teal-dark': '#0F8B83', // Verde-água escuro para hover
+          'teal-light': '#E6F7F6',// Fundo suave verde-água
+          gold: '#D7A65B',      // Dourado para badges e progresso
+          'gold-light': '#FDF8EE',// Fundo suave dourado
+          bg: '#F8FAFC',        // Slate-50 off-white
+          dark: '#0F172A',      // Slate-900 para texto principal
+          slate: '#334155',     // Slate-700 para texto secundário
+          muted: '#64748B',     // Slate-500 para texto auxiliar
+          card: '#FFFFFF',      // Fundo dos cartões
+          border: '#E2E8F0',    // Borda sutil
+          'border-hover': '#CBD5E1', // Borda hover
         },
       },
       fontFamily: {
-        serif: ['Newsreader', 'Georgia', 'Cambria', 'Times New Roman', 'serif'],
-        sans: ['Plus Jakarta Sans', 'Inter', 'system-ui', 'sans-serif'],
+        display: ['Space Grotesk', 'Inter', 'system-ui', 'sans-serif'],
+        sans: ['Inter', 'system-ui', 'sans-serif'],
       },
       boxShadow: {
-        'executive': '0 4px 20px -2px rgba(17, 24, 39, 0.05), 0 2px 6px -1px rgba(17, 24, 39, 0.03)',
-        'executive-hover': '0 10px 30px -4px rgba(17, 24, 39, 0.08), 0 4px 12px -2px rgba(17, 24, 39, 0.04)',
+        'subtle': '0 1px 3px 0 rgba(15, 23, 42, 0.05), 0 1px 2px -1px rgba(15, 23, 42, 0.05)',
+        'card': '0 4px 20px -2px rgba(22, 50, 79, 0.06), 0 2px 6px -1px rgba(22, 50, 79, 0.04)',
+        'card-hover': '0 12px 30px -4px rgba(22, 50, 79, 0.12), 0 4px 10px -2px rgba(19, 168, 158, 0.15)',
+        'teal-glow': '0 0 20px rgba(19, 168, 158, 0.25)',
       },
     },
   },

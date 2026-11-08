@@ -1,0 +1,6 @@
+packages:
+  - '.'
+nodeLinker: hoisted
+symlink: false
+allowBuilds:
+  sharp: true

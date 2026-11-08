@@ -3,126 +3,131 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { usePathname } from 'next/navigation';
-import { Menu, X, ChevronRight } from 'lucide-react';
+import { Menu, X, Mail } from 'lucide-react';
 
-export const Header: React.FC = () => {
+export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const pathname = usePathname();
 
   const navLinks = [
-    { label: 'Início', href: '/' },
-    { label: 'Artigos', href: '/artigos' },
-    { label: 'IA & Shadow AI', href: '/inteligencia-artificial' },
-    { label: 'Computação Forense', href: '/computacao-forense' },
-    { label: 'Resiliência Digital', href: '/resiliencia-digital' },
-    { label: 'Casos', href: '/casos' },
-    { label: 'LGPD & ECA Digital', href: '/lgpd-eca-digital' },
-    { label: 'Executive Briefing', href: '/executive-briefing' },
-    { label: 'Academy', href: '/academy' },
-    { label: 'Sobre', href: '/sobre' },
+    { name: 'Início', href: '#' },
+    { name: 'LGPD', href: '#lgpd' },
+    { name: 'ECA Digital', href: '#eca-digital' },
+    { name: 'Guias', href: '#guias' },
+    { name: 'Artigos', href: '#temas' },
+    { name: 'Sobre', href: '#sobre' },
   ];
 
+  const handleScrollToNewsletter = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setMobileMenuOpen(false);
+    const element = document.getElementById('newsletter');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+      const input = element.querySelector('input[name="email"]') as HTMLInputElement;
+      if (input) setTimeout(() => input.focus(), 400);
+    }
+  };
+
   return (
-    <header className="sticky top-0 z-40 w-full bg-paper-100/95 backdrop-blur-md border-b border-paper-300">
-      {/* Top Banner / Positioning Bar */}
-      <div className="bg-brand-dark text-gray-300 text-xs py-1.5 px-4 text-center tracking-wide font-medium">
-        <span>O melhor momento para conhecer o perito forense não é depois do incidente.</span>
-      </div>
-
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20 gap-4">
-          {/* Logo */}
-          <Link href="/" className="flex items-center shrink-0 group">
-            <div className="relative w-44 sm:w-56 h-12 flex items-center">
-              <Image
-                src="/logo.png"
-                alt="perito.tec.br - Computação Forense e Resiliência Digital"
-                fill
-                priority
-                className="object-contain object-left"
-              />
-            </div>
-          </Link>
-
-          {/* Desktop Nav Links & CTA Button */}
-          <div className="hidden xl:flex items-center space-x-3 2xl:space-x-5 text-xs 2xl:text-sm font-medium">
-            <nav className="flex items-center space-x-3 2xl:space-x-5">
-              {navLinks.map((link) => {
-                const isActive = pathname === link.href;
-                return (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className={`transition-colors py-1 whitespace-nowrap ${
-                      isActive
-                        ? 'text-brand-red font-bold border-b-2 border-brand-red'
-                        : 'text-gray-700 hover:text-brand-red'
-                    }`}
-                  >
-                    {link.label}
-                  </Link>
-                );
-              })}
-            </nav>
-
-            {/* Separated Call to Action Button */}
-            <div className="pl-4 ml-2 border-l border-paper-300 shrink-0">
-              <Link
-                href="/executive-briefing"
-                className="inline-flex items-center justify-center px-4 py-2.5 text-xs uppercase tracking-wider font-semibold text-white bg-brand-red hover:bg-brand-red-dark transition-colors rounded shadow-sm gap-1.5 whitespace-nowrap"
-              >
-                Receber o Briefing
-                <ChevronRight className="w-3.5 h-3.5" />
-              </Link>
-            </div>
+    <header className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-brand-border shadow-subtle">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+        
+        {/* Logo Brand */}
+        <Link 
+          href="/" 
+          className="flex items-center group focus:outline-none focus:ring-2 focus:ring-brand-teal rounded-lg p-1 transition-opacity hover:opacity-90"
+          aria-label="Dados & Privacidade — Página Inicial"
+        >
+          <div className="relative h-10 sm:h-12 w-auto min-w-[180px] sm:min-w-[220px]">
+            <Image 
+              src="/Dados_Privacidade_horizontal_vetor.svg" 
+              alt="Dados & Privacidade" 
+              width={240}
+              height={60}
+              className="h-full w-auto object-contain"
+              priority
+            />
           </div>
+        </Link>
 
-          {/* Mobile Hamburger Button */}
-          <div className="flex xl:hidden">
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-md text-gray-700 hover:text-brand-dark hover:bg-paper-200 transition-colors"
-              aria-label="Abrir Menu"
+        {/* Desktop Navigation Links */}
+        <nav className="hidden lg:flex items-center space-x-1 xl:space-x-2" aria-label="Navegação Principal">
+          {navLinks.map((link) => (
+            <a
+              key={link.name}
+              href={link.href}
+              className="px-3.5 py-2 text-sm font-medium text-brand-dark hover:text-brand-teal hover:bg-brand-teal-light/50 rounded-md transition-all duration-200"
             >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
-          </div>
+              {link.name}
+            </a>
+          ))}
+        </nav>
+
+        {/* Highlighted Action Button */}
+        <div className="hidden lg:flex items-center">
+          <a
+            href="#newsletter"
+            onClick={handleScrollToNewsletter}
+            className="inline-flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-semibold text-white bg-brand-teal hover:bg-brand-teal-dark rounded-lg shadow-sm hover:shadow-teal-glow transition-all duration-200 active:scale-95"
+          >
+            <Mail className="w-4 h-4" />
+            <span>Receber a newsletter</span>
+          </a>
         </div>
+
+        {/* Mobile Menu Toggle */}
+        <div className="flex items-center gap-2 lg:hidden">
+          <a
+            href="#newsletter"
+            onClick={handleScrollToNewsletter}
+            className="p-2 text-brand-teal hover:bg-brand-teal-light rounded-lg transition-colors"
+            aria-label="Receber a newsletter"
+            title="Receber a newsletter"
+          >
+            <Mail className="w-5 h-5" />
+          </a>
+
+          <button
+            type="button"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="p-2.5 text-brand-navy hover:text-brand-teal hover:bg-slate-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-teal"
+            aria-expanded={mobileMenuOpen}
+            aria-label={mobileMenuOpen ? 'Fechar menu de navegação' : 'Abrir menu de navegação'}
+          >
+            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+        </div>
+
       </div>
 
-      {/* Mobile Navigation Drawer */}
+      {/* Mobile Navigation Menu */}
       {mobileMenuOpen && (
-        <div className="xl:hidden bg-white border-b border-paper-300 shadow-xl px-4 pt-3 pb-6 space-y-2 animate-fade-in">
-          {navLinks.map((link) => {
-            const isActive = pathname === link.href;
-            return (
-              <Link
-                key={link.href}
+        <div className="lg:hidden bg-white border-b border-brand-border px-4 pt-3 pb-6 space-y-2 shadow-lg animate-fadeIn">
+          <nav className="flex flex-col space-y-1" aria-label="Navegação Mobile">
+            {navLinks.map((link) => (
+              <a
+                key={link.name}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className={`block px-3 py-2.5 rounded-md text-base font-medium transition-colors ${
-                  isActive
-                    ? 'bg-brand-red-subtle text-brand-red font-bold'
-                    : 'text-gray-800 hover:bg-paper-100 hover:text-brand-red'
-                }`}
+                className="px-4 py-3 rounded-lg text-base font-medium text-brand-dark hover:text-brand-teal hover:bg-brand-teal-light/60 transition-colors"
               >
-                {link.label}
-              </Link>
-            );
-          })}
-          <div className="pt-4">
-            <Link
-              href="/executive-briefing"
-              onClick={() => setMobileMenuOpen(false)}
-              className="w-full inline-flex items-center justify-center px-5 py-3 text-sm font-semibold text-white bg-brand-red hover:bg-brand-red-dark transition-colors rounded uppercase tracking-wider gap-2 shadow"
+                {link.name}
+              </a>
+            ))}
+          </nav>
+
+          <div className="pt-4 border-t border-brand-border flex flex-col gap-2">
+            <a
+              href="#newsletter"
+              onClick={handleScrollToNewsletter}
+              className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 text-base font-semibold text-white bg-brand-teal hover:bg-brand-teal-dark rounded-lg shadow-md font-sans"
             >
-              Receber o Briefing
-              <ChevronRight className="w-4 h-4" />
-            </Link>
+              <Mail className="w-5 h-5" />
+              <span>Receber a newsletter</span>
+            </a>
           </div>
         </div>
       )}
     </header>
   );
-};
+}

@@ -1,376 +1,394 @@
-import { Article } from '@/types';
+export interface ArticleSource {
+  title: string;
+  url: string;
+  publisher: string;
+  trustScore?: number;
+}
 
-export const DEFAULT_AUTHOR = {
-  name: 'Editorial perito.tec.br',
-  role: 'Conselho Editorial & Inteligência Forense',
-  bio: 'Análises estratégicas sobre risco digital, investigações corporativas, resiliência operacional e governança de IA voltadas a executivos e conselhos de administração.',
-};
+export interface ArticleItem {
+  id: string;
+  title: string;
+  slug: string;
+  summary: string;
+  isFeatured?: boolean;
+  category: string;
+  categoryId: string;
+  format: string;
+  level: string;
+  readingTime: string;
+  publishedAt: string;
+  updatedAt: string;
+  primarySource: string;
+  badgeText: string;
+  author: {
+    name: string;
+    role: string;
+    avatar?: string;
+    bio: string;
+  };
+  editor: {
+    name: string;
+    role: string;
+  };
+  reviewer: {
+    name: string;
+    role: string;
+  };
+  summaryPoints: string[];
+  whyItMatters: string;
+  legalContext: string;
+  practicalApplication: string;
+  limitationsAndNotice: string;
+  sources: ArticleSource[];
+  verificationStatus: string;
+  tags: string[];
+  body: string;
+}
 
-export const INITIAL_ARTICLES: Article[] = [
+export const mockArticles: ArticleItem[] = [
   {
-    id: 'artigo-11',
-    slug: 'agora-todos-os-desenvolvedores-sao-gestores-a-era-dos-agentes-de-codigo',
-    title: 'Agora todos os desenvolvedores são gestores: A nova dinâmica da IA e dos Agentes de Código',
-    subtitle: 'Como a proliferação de agentes autônomos de programação transforma a governança de software e exige novos papéis executivos.',
-    category: 'IA & Shadow AI',
-    tags: ['IA Generativa', 'Agentes de Código', 'Governança de IA', 'Desenvolvimento de Software', 'Engenharia de Software'],
-    summary: 'Com a ascensão da codificação baseada em agentes de IA, o desenvolvedor deixa de apenas escrever linhas de código para se tornar um gestor de agentes sintéticos. Essa mudança altera radicalmente a supervisão técnica, a responsabilidade pelas entregas e os riscos operacionais.',
-    briefing: 'Analisar a transição do desenvolvimento de código tradicional para a gestão de agentes de IA e seus impactos na governança corporativa.',
-    publishedAt: '2026-09-17',
-    updatedAt: '2026-09-17',
-    readingTimeMinutes: 5,
+    id: 'art-01',
+    title: 'LGPD para pequenas empresas: por onde começar',
+    slug: 'lgpd-para-pequenas-empresas-por-onde-comecar',
+    summary: 'Um roteiro prático e sem jargões excessivos com os primeiros passos fundamentais para proprietários e gestores de PMEs organizarem a privacidade sem custos astronômicos.',
     isFeatured: true,
-    isMustRead: true,
-    author: DEFAULT_AUTHOR,
-    content: {
-      oQueAconteceu: 'O avanço dos agentes de codificação (agentic coding) transformou a engenharia de software: desenvolvedores estão escrevendo cada vez menos código manual e passando a orientar, supervisionar e validar o código produzido por agentes autônomos de IA.',
-      oQueIssoSignifica: 'Na prática, todo desenvolvedor — mesmo os em início de carreira — passa a exercer um papel de gestão. O agente de IA opera como um liderado sintético: necessita de diretrizes claras, contexto isolado, pontos de checagem (checkpoints) e revisão criteriosa antes de ir para produção.',
-      porQueIssoImporta: 'Embora a velocidade de desenvolvimento aumente significativamente, a natureza dos riscos corporativos muda. Agentes cometem erros, introduzem falhas sutis de arquitetura e podem inserir vulnerabilidades de segurança se operarem sem um rigoroso framework de supervisão.',
-      qualEORisco: 'Aprovação cega de código sintético (sem auditoria adequada), introdução inadvertida de bugs em produção, violação de direitos autorais/licenças de código aberto e incerteza jurídica sobre a responsabilidade técnica pelas entregas.',
-      oQueDeveriaTerSidoPreparado: 'Diretrizes formais de governança para o uso de agentes de IA na engenharia, ambientes isolados (sandboxes) para execução de testes e esteiras automatizadas de auditoria de segurança e qualidade de código.',
-      oQueFazerAgora: 'Reestruturar a matriz de competências da equipe de tecnologia, treinando desenvolvedores na gestão e auditoria de agentes, e reforçar os pipelines de CI/CD com análises estáticas e testes de vulnerabilidade.',
-      perguntasParaExecutivos: [
-        'Nossa empresa possui políticas claras que diferenciam o autocompletar simples da utilização de agentes autônomos com acesso aos repositórios principais?',
-        'Como a diretoria de TI garante que os códigos gerados por agentes sintéticos passam por revisão e auditoria antes da implementação em ambientes críticos?',
-        'O Conselho de Administração tem visibilidade de como a proliferação de código gerado por IA afeta o passivo de segurança e a propriedade intelectual da companhia?'
-      ],
-      fontesEReferencias: [
-        { title: 'InfoWorld - Software developers are all managers now (Nick Hodges)', url: 'https://www.infoworld.com/article/4222371/software-developers-are-all-managers-now.html' },
-        { title: 'Zide Software - Managing Coding Agents as Synthetic Workforce' }
-      ]
-    }
+    category: 'LGPD na operação da empresa',
+    categoryId: 'lgpd-operacao',
+    format: 'Guia Prático',
+    level: 'Iniciante / Gestão',
+    readingTime: '7 min de leitura',
+    publishedAt: '2026-09-28',
+    updatedAt: '2026-09-28',
+    primarySource: 'Art. 7º e Art. 41º da LGPD (Lei nº 13.709/2018) + Guia ANPD para Pequeno Porte',
+    badgeText: 'Guia Fundamental',
+    author: {
+      name: 'Curadoria Editorial Dados & Privacidade',
+      role: 'Equipe de Governança e Regulamentação',
+      bio: 'Produzido e revisado por especialistas em LGPD e gestão de operações para pequenas e médias empresas.'
+    },
+    editor: {
+      name: 'Editoria Técnica',
+      role: 'Dados & Privacidade'
+    },
+    reviewer: {
+      name: 'Revisão Jurídica & Operacional',
+      role: 'Conformidade e Legislação'
+    },
+    summaryPoints: [
+      'Adequação de PMEs não exige soluções complexas ou caras, mas sim organização dos fluxos de dados existentes.',
+      'Identificar quais dados a empresa coleta (clientes, funcionários, fornecedores) é a primeira etapa indispensável.',
+      'O envolvimento da liderança garante que as regras de privacidade saiam do papel e virem rotina diária.'
+    ],
+    whyItMatters: 'Pequenas e médias empresas lidam diariamente com dados pessoais em vendas, emissão de notas fiscais, contratação de pessoal e marketing. Compreender o básico evita penalidades e transmite segurança a clientes.',
+    legalContext: 'A ANPD estabeleceu regulamentação flexibilizada para Agentes de Tratamento de Pequeno Porte (Resolução CD/ANPD nº 2/2022), simplificando obrigações sem isentar a empresa do dever de boa-fé e segurança.',
+    practicalApplication: 'Comece com um inventário simples em planilha: liste quem coleta os dados, onde ficam armazenados (sistema de vendas, WhatsApp, papel), quem tem acesso e com qual finalidade.',
+    limitationsAndNotice: 'Este guia fornece diretrizes gerais de capacitação. Não substitui um diagnóstico jurídico ou consultoria técnica individualizada.',
+    sources: [
+      {
+        title: 'Lei Geral de Proteção de Dados Pessoais (Lei nº 13.709/2018)',
+        url: 'https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm',
+        publisher: 'Presidência da República'
+      },
+      {
+        title: 'Guia Orientativo para Agentes de Tratamento de Pequeno Porte',
+        url: 'https://www.gov.br/anpd',
+        publisher: 'Autoridade Nacional de Proteção de Dados (ANPD)'
+      }
+    ],
+    verificationStatus: 'Fonte Primária Verificada',
+    tags: ['LGPD', 'PMEs', 'Gestão', 'Primeiros Passos', 'Operação'],
+    body: `
+# LGPD para pequenas empresas: por onde começar
+
+> **Boneco de Conteúdo / Estrutura Editorial em Preparação**
+> *Este artigo faz parte da trilha inicial do Dados & Privacidade para orientação de proprietários e gestores.*
+
+---
+
+## 1. O Ponto de Partida: Desmistificando a LGPD para PMEs
+
+Para quem administra uma pequena ou média empresa, ouvir falar em **LGPD (Lei Geral de Proteção de Dados)** muitas vezes gera apreensão. É comum surgir a falsa impressão de que adequar o negócio exige softwares caríssimos, consultorias inacessíveis ou a contratação imediata de novos funcionários dedicados.
+
+A realidade, no entanto, é mais simples e direta: **a proteção de dados é uma questão de organização de processos e boa-fé administrativa.**
+
+Se a sua empresa possui clientes cadastrados, envia mensagens no WhatsApp, emite notas fiscais ou contrata funcionários, você já trata dados pessoais. O objetivo da LGPD não é proibir esse tratamento, mas garantir que ele ocorra de forma transparente, segura e com finalidades bem definidas.
+
+---
+
+## 2. As 4 Perguntas Iniciais para o Gestor
+
+Antes de contratar qualquer ferramenta, o proprietário ou gestor deve reunir sua equipe chave (marketing, vendas, RH e financeiro) e responder a quatro perguntas fundamentais:
+
+1. **Quais dados pessoais nós realmente coletamos?** (Ex.: CPF, e-mail, telefone, endereço, histórico de compras).
+2. **Por que nós precisamos de cada um desses dados?** (Existe uma razão comercial ou obrigação legal direta?).
+3. **Onde esses dados ficam armazenados?** (Em planilhas no computador, no sistema CRM, no papel ou na nuvem?).
+4. **Quem dentro da empresa tem acesso a eles?** (Todos os colaboradores ou apenas os responsáveis pela tarefa?).
+
+---
+
+## 3. Roteiro Prático de 5 Passos para a Aplicação
+
+### Passo 1: Faça o Inventário Simplificado de Dados
+Crie uma planilha simples com as colunas: *Processo*, *Dados Coletados*, *Onde Fica*, *Finalidade* e *Quem Acessa*. Esse documento será o mapa de navegação da sua empresa.
+
+### Passo 2: Revise as Permissões de Acesso
+Restrinja o acesso às pastas e sistemas. O setor de vendas não precisa acessar documentos do departamento pessoal; o marketing não precisa ver dados bancários.
+
+### Passo 3: Adote Medidas Básicas de Segurança Digital
+Exija senhas fortes, ative a autenticação em duas etapas (2FA) nos e-mails e sistemas de gestão, e garanta backups periódicos de arquivos importantes.
+
+### Passo 4: Atualize o Diálogo com o Cliente
+Deixe claro ao cliente no momento do cadastro para que seu e-mail ou telefone será utilizado. A transparência gera confiança imediata.
+
+### Passo 5: Envolva e Conscientize a Equipe
+A maioria dos incidentes de dados ocorre por descuido humano (como enviar e-mail para o destinatário errado). Realize conversas periódicas sobre boas práticas de privacidade.
+
+---
+
+## 4. O Que Diz a Regulamentação Flexibilizada da ANPD
+
+A Autoridade Nacional de Proteção de Dados (ANPD) reconhece a realidade diferenciada das PMEs através da **Resolução CD/ANPD nº 2/2022**. Ela estabelece regras simplificadas para Agentes de Tratamento de Pequeno Porte, incluindo:
+
+* Prazos em dobro para atendimento a solicitações de titulares de dados;
+* Procedimento simplificado para registro de operações de tratamento;
+* Flexibilidade na indicação do Encarregado de Dados (DPO), dependendo do risco das atividades.
+
+---
+
+## 5. Próximo Passo Prático
+
+Faça o download do nosso modelo de **Planilha de Mapeamento Simplificado** (em breve na seção de Materiais) e agende uma conversa de 30 minutos com sua equipe para mapear o primeiro setor da empresa.
+    `
   },
   {
-    id: 'artigo-1',
-    slug: 'sua-empresa-tem-backup-mas-conseguiria-sobreviver-a-um-desastre-digital',
-    title: 'Sua empresa tem backup. Mas conseguiria sobreviver a um desastre digital?',
-    subtitle: 'A ilusão da cópia de segurança em ambientes corporativos sob ataque sofisticado.',
-    category: 'Resiliência Digital',
-    tags: ['Disaster Recovery', 'Backup', 'Continuidade de Negócios', 'Governança'],
-    summary: 'Ter backups atualizados é apenas o primeiro passo. Sem testes de restauração em ambiente isolado e sem preservação de evidências, o backup pode restaurar o próprio malware ou destruir provas essenciais.',
-    briefing: 'Explicar a diferença entre backup, disaster recovery, continuidade e resiliência digital.',
-    publishedAt: '2026-08-20',
-    updatedAt: '2026-08-21',
-    readingTimeMinutes: 6,
+    id: 'art-02',
+    title: 'Quando o ECA Digital pode afetar meu negócio?',
+    slug: 'quando-o-eca-digital-pode-afetar-meu-negocio',
+    summary: 'Entenda quais tipos de sites, e-commerces, sistemas e serviços digitais se enquadram nas obrigações da nova Lei nº 15.211/2025 de proteção a crianças e adolescentes.',
     isFeatured: false,
-    isMustRead: true,
-    author: DEFAULT_AUTHOR,
-    content: {
-      oQueAconteceu: 'Organizações com investimentos milionários em infraestrutura continuam paralisadas durante dias após ataques de ransomware, mesmo possuindo rotinas diárias de backup.',
-      oQueIssoSignifica: 'Backup é uma medida passiva de cópia de dados; resiliência digital é a capacidade ativa de manter a decisão, restaurar operações limpas e fundamentar a investigação jurídica do incidente.',
-      porQueIssoImporta: 'O tempo médio de paralisação ininterrupta por sequestro de dados supera 14 dias em corporações que não testam a reconstrução forense de seus ambientes.',
-      qualEORisco: 'Restauração de sistemas contaminados, reinfecção em cadeia, perda irreversível de logs de auditoria e inviabilização de ações judiciais de regresso ou acionamento de seguro cibernético.',
-      oQueDeveriaTerSidoPreparado: 'Separação estrita entre Disaster Recovery (DR) e Preservação Forense, testes imutáveis de imagem fora de rede (air-gapped) e protocolos de integridade.',
-      oQueFazerAgora: 'Auditar o tempo real de recuperação (RTO) e ponto de recuperação (RPO) considerando contaminação cibernética, e não apenas falhas de hardware.',
-      perguntasParaExecutivos: [
-        'Qual foi a última vez que a empresa simulou uma restauração completa a partir de um backup totalmente isolado?',
-        'O plano de recuperação garante a preservação dos logs anteriores ao incidente para fins de perícia?',
-        'O Conselho tem visibilidade do impacto financeiro direto por dia de paralisação total dos sistemas operacionais?'
-      ],
-      fontesEReferencias: [
-        { title: 'NIST Special Publication 800-34 Rev. 1 - Contingency Planning Guide for Federal Information Systems' },
-        { title: 'ISO/IEC 27035-1:2023 - Information security incident management' }
-      ]
-    }
+    category: 'ECA Digital e serviços digitais',
+    categoryId: 'eca-digital',
+    format: 'Análise Regulatória',
+    level: 'Intermediário',
+    readingTime: '8 min de leitura',
+    publishedAt: '2026-09-28',
+    updatedAt: '2026-09-28',
+    primarySource: 'Lei nº 15.211/2025 (ECA Digital) + Art. 14 da LGPD',
+    badgeText: 'Especial ECA Digital',
+    author: {
+      name: 'Curadoria Editorial Dados & Privacidade',
+      role: 'Equipe de Governança e Regulamentação',
+      bio: 'Produzido e revisado por especialistas em LGPD e ECA Digital.'
+    },
+    editor: {
+      name: 'Editoria Técnica',
+      role: 'Dados & Privacidade'
+    },
+    reviewer: {
+      name: 'Revisão de Direitos Digitais',
+      role: 'Privacidade de Crianças e Adolescentes'
+    },
+    summaryPoints: [
+      'O ECA Digital (Lei nº 15.211/2025) estabelece dever de proteção por padrão para serviços digitais acessíveis por crianças e adolescentes.',
+      'Mesmo empresas que não têm público infantil como alvo principal podem ser afetadas se permitirem cadastros ou interações de menores.',
+      'Requisitos incluem verificação etária adequada, limitação de perfilamento comportamental e design seguro por padrão.'
+    ],
+    whyItMatters: 'Com a promulgação da Lei nº 15.211/2025, empresas de tecnologia, jogos, educação, e-commerce e plataformas de conteúdo precisam avaliar urgentemente se seus sistemas atendem às salvaguardas reforçadas para o público menor de 18 anos.',
+    legalContext: 'O ECA Digital complementa a LGPD (Art. 14), detalhando deveres específicos de prevenção a riscos digitais, superexposição, publicidade direcionada e mecanismos de consentimento parental.',
+    practicalApplication: 'Mapeie se o seu site ou aplicativo permite a criação de contas por menores e verifique se há mecanismos claros de aviso, controle de idade e termos de uso em linguagem acessível ao público jovem.',
+    limitationsAndNotice: 'O presente material possui intuito informativo e pedagógico. Análises de enquadramento contratual exigem avaliação técnica específica do serviço prestado.',
+    sources: [
+      {
+        title: 'Lei nº 15.211/2025 (ECA Digital)',
+        url: 'https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/lei/l15211.htm',
+        publisher: 'Presidência da República'
+      },
+      {
+        title: 'Estatuto da Criança e do Adolescente (Lei nº 8.069/1990)',
+        url: 'https://www.planalto.gov.br/ccivil_03/leis/l8069.htm',
+        publisher: 'Presidência da República'
+      }
+    ],
+    verificationStatus: 'Fonte Primária Verificada',
+    tags: ['ECA Digital', 'Lei 15.211/2025', 'Serviços Digitais', 'Proteção de Menores'],
+    body: `
+# Quando o ECA Digital pode afetar meu negócio?
+
+> **Boneco de Conteúdo / Estrutura Editorial em Preparação**
+> *Este artigo faz parte da trilha especial sobre a Lei nº 15.211/2025 (ECA Digital) para provedores de serviços digitais.*
+
+---
+
+## 1. O Que É o ECA Digital e Qual Seu Alcance?
+
+Sancionado para fortalecer a proteção de crianças e adolescentes no ambiente virtual, o **ECA Digital (Lei nº 15.211/2025)** estabelece diretrizes claras para empresas que desenvolvem, operam ou disponibilizam produtos e serviços digitais no Brasil.
+
+Muitos gestores acreditam erroneamente que a lei se aplica apenas a jogos infantis ou plataformas de grandes redes sociais. No entanto, o alcance da legislação é mais amplo: **qualquer serviço digital com probabilidade razoável de acesso por menores de 18 anos precisa adotar precauções de privacidade e segurança por padrão (Privacy & Safety by Design).**
+
+---
+
+## 2. Quem Deve Ficar Atento? (Critérios de Enquadramento)
+
+Sua empresa pode ser diretamente afetada caso se enquadre em um dos seguintes cenários:
+
+* **Plataformas de Cursos ou Educação Online**: Que matriculam estudantes adolescentes ou crianças.
+* **E-commerces e Lojas Virtuais**: Que vendem produtos direcionados ao público jovem ou de uso familiar.
+* **Sistemas de Chat, Fóruns ou Comunidades**: Onde usuários podem interagir de forma aberta ou privada.
+* **Aplicativos e Jogos**: Com elementos de microtransações, cadastro de usuários ou anúncios.
+* **Serviços de Conteúdo e Mídia**: Que transmitem vídeos, podcasts ou artigos acessíveis sem restrição etária.
+
+---
+
+## 3. Os Pilares Fundamentais da Lei nº 15.211/2025
+
+### A. Privacidade por Padrão (Privacy by Default)
+As configurações iniciais de contas de usuários menores devem ser automaticamente definidas com o nível máximo de privacidade, sem compartilhamento público de dados ou localização.
+
+### B. Restrição ao Perfilamento e Publicidade Direcionada
+A lei proíbe o rastreamento comportamental agressivo de crianças para fins de exibição de anúncios segmentados ou indução ao consumo compulsivo.
+
+### C. Mecanismos de Verificação e Consentimento dos Pais
+Para o público infantil (menores de 12 anos), o tratamento de dados exige consentimento específico e em destaque dado por pelo menos um dos pais ou responsável legal.
+
+### D. Linguagem Simples e Acessível
+Os termos de uso e avisos de privacidade devem ser escritos em linguagem clara, direta e compreensível para o próprio público jovem.
+
+---
+
+## 4. Roteiro de Avaliação Inicial para Sua Empresa
+
+1. **Identifique a faixa etária dos seus usuários reais**: Analise os logs e cadastros existentes.
+2. **Avalie os riscos do ambiente**: Existe exposição a contatos indesejados, conteúdos inadequados ou coleta excessiva de dados?
+3. **Implemente barreiras etárias proporcionais**: Utilize formulários de confirmação de idade sem solicitar dados excessivos.
+4. **Revise seus parceiros de publicidade e métricas**: Garanta que scripts de terceiros não façam perfilamento não autorizado de menores.
+
+---
+
+## 5. Próximo Passo
+
+Consulte a nossa categoria **ECA Digital e Serviços Digitais** para acessar os roteiros de avaliação e modelos de avisos adaptados.
+    `
   },
   {
-    id: 'artigo-2',
-    slug: 'depois-do-ataque-nao-e-hora-de-descobrir-quem-deveria-fazer-o-que',
-    title: 'Depois do ataque não é hora de descobrir quem deveria fazer o quê',
-    subtitle: 'Por que a cadeia de comando pré-definida entre TI, Jurídico, RH e Comunicação salva reputações e ativos.',
-    category: 'Board',
-    tags: ['Gestão de Crise', 'Governança', 'Incident Response', 'Comunicação Corporativa'],
-    summary: 'Em momentos de crise cibernética, a paralisia decisória é mais danosa que o incidente técnico. Definir papéis antes de a crise estourar evita vazamentos descontrolados e atropelos jurídicos.',
-    briefing: 'Mostrar por que CEO, CIO, Jurídico, Comunicação, RH e demais áreas precisam conhecer previamente seus papéis.',
-    publishedAt: '2026-08-18',
-    updatedAt: '2026-08-21',
-    readingTimeMinutes: 5,
+    id: 'art-03',
+    title: 'Que registros ajudam a demonstrar as decisões de proteção de dados?',
+    slug: 'que-registros-ajudam-a-demonstrar-as-decisoes-de-protecao-de-dados',
+    summary: 'Descubra quais evidências mínimas e registros formais (ROPA simplificado, termos, atas e logs) comprovam a boa-fé e a governança da empresa perante fiscalizações e auditorias.',
     isFeatured: false,
-    isMustRead: true,
-    author: DEFAULT_AUTHOR,
-    content: {
-      oQueAconteceu: 'Durante incidentes críticos, reuniões executivas perdem horas debatendo quem deve autorizar o desligamento de servidores ou quem responde à imprensa, enquanto o dano se propaga.',
-      oQueIssoSignifica: 'A governança de resposta a incidentes não é um documento técnico guardado na TI; é um protocolo de alta gestão com alçadas de decisão claramente estabelecidas.',
-      porQueIssoImporta: 'Notificações à ANPD, comunicados a acionistas e declarações à imprensa feitas sem o alinhamento entre Perícia, Jurídico e C-Level geram passivos regulatórios milionários.',
-      qualEORisco: 'Declarações contraditórias na mídia, descumprimento de prazos legais de notificação, destruição inadvertida de evidências por equipes operacionais afobadas e perda de cobertura de apólices de seguro.',
-      oQueDeveriaTerSidoPreparado: 'Uma matriz RACI de crise abrangendo CEO, CFO, CIO, CISO, General Counsel, DPO, Assessoria de Imprensa e Especialistas Forenses Externos.',
-      oQueFazerAgora: 'Realizar um simulado de mesa (Tabletop Exercise) com a diretoria executiva simulando um vazamento crítico de dados.',
-      perguntasParaExecutivos: [
-        'Quem tem autoridade final para decidir desligar sistemas de faturamento em caso de suspeita de invasão?',
-        'O time de comunicação possui diretrizes pré-aprovadas pelo jurídico para manifestações nas primeiras 4 horas?',
-        'Os contatos de emergência do perito forense e do escritório especializado estão acessíveis fora da rede corporativa?'
-      ],
-      fontesEReferencias: [
-        { title: 'Harvard Business Review - Managing the Cyber Incident Crisis Response' },
-        { title: 'CERT.br - Guia de Tratamento e Resposta a Incidentes de Segurança' }
-      ]
-    }
-  },
-  {
-    id: 'artigo-3',
-    slug: 'o-perito-forense-deveria-conhecer-sua-empresa-antes-do-incidente',
-    title: 'O perito forense deveria conhecer sua empresa antes do incidente',
-    subtitle: 'Como o Forensic Readiness reduz drasticamente o custo e o tempo de investigação corporativa.',
-    category: 'Computação Forense',
-    tags: ['Forensic Readiness', 'Perícia Digital', 'Investigação', 'Mitigação'],
-    summary: 'Chamar peritos forenses apenas quando o incidente acontece significa pagar horas de onboarding emergencial sob extrema pressão. A preparação prévia transforma a investigação em um procedimento cirúrgico.',
-    briefing: 'Mostrar como preparação prévia melhora a capacidade de resposta e preservação das evidências.',
-    publishedAt: '2026-08-15',
-    updatedAt: '2026-08-21',
-    readingTimeMinutes: 7,
-    isFeatured: false,
-    isMustRead: true,
-    author: DEFAULT_AUTHOR,
-    content: {
-      oQueAconteceu: 'Empresas contratam perícia digital durante um ataque e descobrem que não possuem logs históricos ativados, topologia de rede documentada nem permissões prontas para coleta.',
-      oQueIssoSignifica: 'Forensic Readiness (prontidão forense) é a capacidade estrutural de uma empresa em responder a dúvidas investigativas ao menor custo e com o menor impacto às operações.',
-      porQueIssoImporta: 'Sem prontidão forense, mais de 70% do tempo dos investigadores é consumido tentando entender a arquitetura da empresa e localizando onde (ou se) as evidências foram salvas.',
-      qualEORisco: 'Incapacidade técnica de provar a autoria de uma fraude interna ou vazamento, custos de consultoria quadruplicados e imprecisão nas conclusões periciais.',
-      oQueDeveriaTerSidoPreparado: 'Mapeamento das fontes de evidência crítica, tempo de retenção de logs centralizados (SIEM/Syslog) e acordos de contratação de sobreaviso (retainer) pericial.',
-      oQueFazerAgora: 'Avaliar o nível de maturidade de prontidão forense (Forensic Readiness Assessment) dos ambientes locais e em nuvem.',
-      perguntasParaExecutivos: [
-        'Nossa infraestrutura em nuvem está configurada para reter logs de auditoria por quanto tempo em caso de incidente?',
-        'Possuímos uma consultoria forense pré-homologada capaz de iniciar a coleta preservada em menos de 2 horas?',
-        'Nossa política interna prevê expressamente a coleta e análise de dispositivos corporativos em investigações?'
-      ],
-      fontesEReferencias: [
-        { title: 'ISO/IEC 27043:2015 - Incident investigation principles and processes' },
-        { title: 'SANS Institute - Forensic Readiness: Building a Response Strategy' }
-      ]
-    }
-  },
-  {
-    id: 'artigo-4',
-    slug: 'sua-empresa-implantou-inteligencia-artificial-ou-apenas-entregou-uma-conta-de-ia',
-    title: 'Sua empresa implantou inteligência artificial ou apenas entregou uma conta de IA aos funcionários?',
-    subtitle: 'A diferença crucial entre governança corporativa de IA e simples disponibilização de ferramentas.',
-    category: 'IA & Shadow AI',
-    tags: ['Inteligência Artificial', 'Governança de IA', 'Shadow AI', 'Vazamento de Dados'],
-    summary: 'Assinar licenças corporativas de plataformas de IA sem regras claras de uso, privacidade e auditoria cria a falsa sensação de modernização enquanto expõe segredos industriais e dados pessoais.',
-    briefing: 'Explicar adoção planejada versus experimentação corporativa desordenada.',
-    publishedAt: '2026-08-12',
-    updatedAt: '2026-08-21',
-    readingTimeMinutes: 6,
-    isFeatured: true,
-    isMustRead: false,
-    author: DEFAULT_AUTHOR,
-    content: {
-      oQueAconteceu: 'Colaboradores inserem demonstrações financeiras, planos estratégicos e dados de clientes em modelos de linguagem para gerar relatórios sem saber que os dados alimentam treinamento externo.',
-      oQueIssoSignifica: 'Disponibilizar IA sem governança é delegar a política de segurança da informação ao discernimento individual de cada usuário.',
-      porQueIssoImporta: 'O uso de IA em processos de tomada de decisão, contratação e avaliação de crédito gera responsabilização direta da diretoria frente a vieses e violações de privacidade.',
-      qualEORisco: 'Vazamento inadvertido de propriedade intelectual, infração direta à LGPD, sanções regulatórias da ANPD e contaminação de bases de dados com alucinações não verificadas.',
-      oQueDeveriaTerSidoPreparado: 'Política de Uso Aceitável de IA Corporativa, configuração de locatários empresariais com opt-out de treinamento e catálogo de modelos autorizados.',
-      oQueFazerAgora: 'Implementar auditoria de tráfego de dados para endpoints de IA e classificar os tipos de dados autorizados para processamento sintético.',
-      perguntasParaExecutivos: [
-        'A empresa sabe exatamente quais ferramentas de IA estão sendo utilizadas nos departamentos financeiro e jurídico?',
-        'Os contratos assinados com fornecedores de IA garantem a não utilização de dados corporativos para retenção ou aprendizado?',
-        'Existe um comitê interdisciplinar avaliando os riscos contratuais e reputacionais do uso de IA na operação?'
-      ],
-      fontesEReferencias: [
-        { title: 'NIST AI Risk Management Framework (AI RMF 1.0)' },
-        { title: 'EU Artificial Intelligence Act (EU AI Act) Compliance Overview' }
-      ]
-    }
-  },
-  {
-    id: 'artigo-5',
-    slug: 'shadow-ai-os-sistemas-que-seus-funcionarios-estao-criando-e-ninguem-esta-governando',
-    title: 'Shadow AI: os sistemas que seus funcionários estão criando e ninguém está governando',
-    subtitle: 'Automações paralelas, agentes autônomos e scripts sem supervisão da TI.',
-    category: 'IA & Shadow AI',
-    tags: ['Shadow AI', 'Risco Operacional', 'Agentes de IA', 'Compliance'],
-    summary: 'Colaboradores estão criando fluxos automatizados com conectores de IA sem passar por homologação de segurança, gerando uma camada invisível de sistemas críticos na empresa.',
-    briefing: 'Mostrar automações, agentes e processos paralelos criados fora da governança.',
-    publishedAt: '2026-08-10',
-    updatedAt: '2026-08-21',
-    readingTimeMinutes: 5,
-    isFeatured: false,
-    isMustRead: false,
-    author: DEFAULT_AUTHOR,
-    content: {
-      oQueAconteceu: 'Analistas criam robôs de IA integrados aos seus e-mails e planilhas corporativas para responder clientes automaticamente, criando falhas de conformidade imperceptíveis à TI.',
-      oQueIssoSignifica: 'Shadow AI é a evolução da Shadow IT: não é apenas o uso de software não autorizado, é a criação de agentes autônomos tomadores de decisão operando à margem do controle.',
-      porQueIssoImporta: 'Quando um agente autônomo comete um erro contratual ou envia dados confidenciais a terceiros, a responsabilidade civil e administrativa permanece integralmente da empresa.',
-      qualEORisco: 'Brechas de segurança por credenciais expostas em scripts de automação, vazamentos em APIs de terceiros e decisões de negócios baseadas em automações defeituosas.',
-      oQueDeveriaTerSidoPreparado: 'Governança de plataformas no-code/low-code, monitoramento de tokens de API corporativos e inventário de automações internas.',
-      oQueFazerAgora: 'Promover um levantamento educativo de automações em uso nos setores-chave e disponibilizar um ambiente seguro e homologado (sandbox) para inovação.',
-      perguntasParaExecutivos: [
-        'Nossa TI possui ferramentas para detectar quando um colaborador conecta dados internos a APIs externas de IA?',
-        'Quem é o responsável legal pelas decisões automatizadas tomadas por robôs desenvolvidos internamente?',
-        'Existem credenciais corporativas salvas em código de automações criadas por funcionários nas áreas de negócio?'
-      ],
-      fontesEReferencias: [
-        { title: 'Gartner - Managing the Risks of Generative AI and Shadow AI' },
-        { title: 'ISACA - AI Governance and Shadow Systems Framework' }
-      ]
-    }
-  },
-  {
-    id: 'artigo-6',
-    slug: 'seu-plano-de-recuperacao-pode-destruir-a-prova-do-incidente',
-    title: 'Seu plano de recuperação pode destruir a prova do incidente',
-    subtitle: 'Os perigos de formatar, reinstalar ou sobrescrever servidores antes da preservação de evidências.',
-    category: 'Evidência Digital',
-    tags: ['Preservação Forense', 'Cadeia de Custódia', 'Incidentes', 'Perícia Digital'],
-    summary: 'Na pressa de fazer a empresa voltar a faturar, equipes de TI frequentemente formatam servidores contaminados, destruindo a memória RAM e os registros necessários para identificar a origem do ataque.',
-    briefing: 'Explicar os riscos de restaurar, formatar ou substituir sistemas antes da preservação adequada das evidências.',
-    publishedAt: '2026-08-08',
-    updatedAt: '2026-08-21',
-    readingTimeMinutes: 6,
-    isFeatured: false,
-    isMustRead: false,
-    author: DEFAULT_AUTHOR,
-    content: {
-      oQueAconteceu: 'Após um ataque de ransomware, o time de infraestrutura reinstalou o sistema operacional para acelerar o retorno dos serviços, invalidando o pedido de indenização junto à seguradora por falta de provas.',
-      oQueIssoSignifica: 'A preservação forense da evidência (espelhamento bit-a-bit e preservação de memória volátil) deve anteceder a remediação técnica.',
-      porQueIssoImporta: 'Provas digitais alteradas ou destruídas por imperícia técnica impedem a responsabilização de criminosos, a apuração de cumplicidade interna e a defesa judicial da empresa.',
-      qualEORisco: 'Perda irreparável da cadeia de custódia, negação de cobertura de seguro cibernético e impossibilidade de comprovação de escopo perante a ANPD.',
-      oQueDeveriaTerSidoPreparado: 'Procedimento Operacional Padrão (POP) de isolamento e cópia forense preventiva antes de qualquer procedimento de restauração.',
-      oQueFazerAgora: 'Treinar os administradores de rede sobre a importância da preservação da memória RAM e isolamento de conectividade antes do desligamento de servidores.',
-      perguntasParaExecutivos: [
-        'Nosso plano de continuidade exige explicitamente a preservação forense antes do reset ou restauração de sistemas?',
-        'Nossa equipe de TI sabe como extrair e preservar a memória volátil de um servidor comprometido?',
-        'O contrato com a seguradora exige laudo forense homologado com cadeia de custódia preservada?'
-      ],
-      fontesEReferencias: [
-        { title: 'ISO/IEC 27037:2012 - Guidelines for identification, collection, acquisition and preservation of digital evidence' },
-        { title: 'INTERPOL - Global Guidelines for Digital Forensic Laboratory Management' }
-      ]
-    }
-  },
-  {
-    id: 'artigo-7',
-    slug: 'o-board-sabe-realmente-quanto-um-incidente-digital-poderia-custar',
-    title: 'O Board sabe realmente quanto um incidente digital poderia custar?',
-    subtitle: 'Traduzindo o risco cibernético para métricas financeiras, regulatórias, operacionais e de governança.',
-    category: 'Board',
-    tags: ['Cyber Risk', 'Governança', 'Conselho de Administração', 'Risco Operacional'],
-    summary: 'Apresentar relatórios técnicos com números de firewalls e tentativas de invasão bloqueadas não traduz o risco para o Conselho. É preciso mensurar o impacto direto no fluxo de caixa e na reputação.',
-    briefing: 'Traduzir cyber risk para impacto financeiro, jurídico, operacional, regulatório e reputacional.',
-    publishedAt: '2026-08-05',
-    updatedAt: '2026-08-21',
-    readingTimeMinutes: 8,
-    isFeatured: true,
-    isMustRead: true,
-    author: DEFAULT_AUTHOR,
-    content: {
-      oQueAconteceu: 'Conselhos aprovam orçamentos de segurança com base apenas em cumprimentos formais de tabela, sem compreender o passivo oculto de incidentes de grande porte.',
-      oQueIssoSignifica: 'O risco digital é um risco de negócio de primeira grandeza, exigindo métricas financeiras claras (VaR cibernético, perda operacional estimada e custo de litígio).',
-      porQueIssoImporta: 'Membros de conselho de administração passam a ser responsabilizados pessoalmente por acionistas caso demonstrem omissão na supervisão da resiliência digital da companhia.',
-      qualEORisco: 'Desvalorização de mercado, perda de confiança de investidores, multas regulatórias e despesas não orçadas em gestão de crise e advocacia especializada.',
-      oQueDeveriaTerSidoPreparado: 'Relatórios trimestrais de risco cibernético focados em cenários de perda financeira e testes de estresse de continuidade.',
-      oQueFazerAgora: 'Adotar uma metodologia de quantificação de risco financeiro cibernético (como o modelo FAIR) nas reuniões de conselho.',
-      perguntasParaExecutivos: [
-        'O Conselho recebe relatórios de risco digital expressos em termos financeiros ou apenas em jargões de TI?',
-        'Qual é o custo estimado para a empresa se o sistema ERP principal ficar indisponível por 7 dias corridos?',
-        'O valor da apólice de seguro cobriria os custos de perícia, notificação, honorários e paralisação operacional?'
-      ],
-      fontesEReferencias: [
-        { title: 'SEC Release No. 33-11216 - Cybersecurity Risk Management, Strategy, Governance, and Incident Disclosure' },
-        { title: 'FAIR Institute - Quantitative Cyber Risk Management Framework' }
-      ]
-    }
-  },
-  {
-    id: 'artigo-8',
-    slug: 'quando-um-funcionario-deixa-a-empresa-o-que-acontece-com-as-evidencias-digitais',
-    title: 'Quando um funcionário deixa a empresa, o que acontece com as evidências digitais?',
-    subtitle: 'Gestão de desativação de acessos, salvaguarda de e-mails, dispositivos móveis e propriedade intelectual.',
-    category: 'Fraude',
-    tags: ['Fraude Interna', 'Exfiltração de Dados', 'Desligamento', 'Recursos Humanos'],
-    summary: 'A maior parte das exfiltrações de segredos industriais e dados de clientes ocorre nas semanas anteriores ou posteriores ao desligamento de executivos e colaboradores de áreas estratégicas.',
-    briefing: 'Abordar dispositivos, e-mail, cloud, propriedade intelectual e credenciais.',
-    publishedAt: '2026-08-03',
-    updatedAt: '2026-08-21',
-    readingTimeMinutes: 5,
-    isFeatured: false,
-    isMustRead: false,
-    author: DEFAULT_AUTHOR,
-    content: {
-      oQueAconteceu: 'Ex-executivo de vendas transfere a base inteira de clientes para o seu e-mail pessoal dias antes de pedir demissão e assumir cargo em concorrente direto.',
-      oQueIssoSignifica: 'O processo de offboarding deve ser planejado como um protocolo de segurança e preservação de evidências, e não como mera rotina burocrática de RH.',
-      porQueIssoImporta: 'A ausência de auditoria em desativações impede a rápida obtenção de liminares judiciais para bloqueio de uso ilícito de propriedade intelectual corporativa.',
-      qualEORisco: 'Perda de vantagens competitivas, concorrência desleal acobertada, violação da LGPD e contaminação de credenciais compartilhadas.',
-      oQueDeveriaTerSidoPreparado: 'Revogação imediata e sincronizada de identidades em nuvem, retenção legal de caixas postais de executivos estratégicos e preservação do disco do computador de trabalho.',
-      oQueFazerAgora: 'Revisar os termos de devolução de equipamentos e implementar DLP (Data Loss Prevention) com foco em desligamentos de posições sensíveis.',
-      perguntasParaExecutivos: [
-        'O que é feito com os computadores e celulares corporativos devolvidos por executivos estratégicos após o desligamento?',
-        'Existe monitoramento automático de cópia massiva de arquivos em pen drives ou nuvem pessoal antes da saída de funcionários?',
-        'As contas de e-mail e acessos de ex-colaboradores são sumariamente desativadas no exato instante do anúncio do desligamento?'
-      ],
-      fontesEReferencias: [
-        { title: 'CERT Insider Threat Center - Common Sense Guide to Mitigating Insider Threats' },
-        { title: 'Lei da Propriedade Industrial (Lei nº 9.279/1996) - Concorrência Desleal e Segredo de Negócio' }
-      ]
-    }
-  },
-  {
-    id: 'artigo-9',
-    slug: 'lgpd-e-eca-digital-o-risco-digital-que-deixou-de-ser-apenas-responsabilidade-da-ti',
-    title: 'LGPD e ECA Digital: o risco digital que deixou de ser apenas responsabilidade da TI',
-    subtitle: 'Proteção de dados, salvaguarda de crianças e adolescentes, IA e a responsabilidade direta dos administradores.',
-    category: 'LGPD & ECA Digital',
-    tags: ['LGPD', 'ECA Digital', 'Privacidade', 'Compliance', 'Direito Digital'],
-    summary: 'A conformidade com a LGPD e com as diretrizes do ECA no ambiente digital exige governança ativa sobre coleta, tratamento de dados de vulneráveis e o uso de algoritmos, sob pena de responsabilização civil severa.',
-    briefing: 'Mostrar como proteção de dados, IA, plataformas e usuários podem gerar exposição empresarial.',
-    publishedAt: '2026-07-30',
-    updatedAt: '2026-08-21',
-    readingTimeMinutes: 7,
-    isFeatured: true,
-    isMustRead: true,
-    author: DEFAULT_AUTHOR,
-    content: {
-      oQueAconteceu: 'Empresas de tecnologia, educação e varejo enfrentam fiscalizações rigorosas e ações civis públicas por conta de profiling indevido e vazamento de dados que afetam menores e titulares de dados sensíveis.',
-      oQueIssoSignifica: 'Conformidade com LGPD e ECA Digital não se resume a publicar avisos de cookies no site; demanda auditoria permanente dos fluxos de informação e proteção de vulneráveis.',
-      porQueIssoImporta: 'O descumprimento gera multas administrativas de até R$ 50 milhões por infração, além de sanções reputacionais devastadoras e proibição de tratamento de bases essenciais de dados.',
-      qualEORisco: 'Interdição de produtos digitais, responsabilização solidária de diretores, publicidade negativa extensiva e processos judiciais coletivos.',
-      oQueDeveriaTerSidoPreparado: 'Relatório de Impacto à Proteção de Dados (RIPD/DPIA), mapeamento de dados sensíveis e governança no desenvolvimento de soluções digitais voltadas ao público em geral.',
-      oQueFazerAgora: 'Integrar a equipe de privacidade, compliance e perícia digital na validação de todo novo sistema, IA ou campanha corporativa.',
-      perguntasParaExecutivos: [
-        'Nossa empresa trata direta ou indiretamente dados de crianças e adolescentes ou dados pessoais sensíveis?',
-        'O DPO e o Jurídico possuem respaldo técnico para auditar os algoritmos e sistemas internos de tratamento de dados?',
-        'Possuímos plano comprovado para notificar a ANPD e os titulares no prazo adequado em caso de incidente confirmado?'
-      ],
-      fontesEReferencias: [
-        { title: 'Lei Geral de Proteção de Dados (Lei nº 13.709/2018 - LGPD)' },
-        { title: 'Estatuto da Criança e do Adolescente (Lei nº 8.069/1990) e Diretrizes para Ambientes Digitais' },
-        { title: 'Resoluções e Guias Orientativos da Autoridade Nacional de Proteção de Dados (ANPD)' }
-      ]
-    }
-  },
-  {
-    id: 'artigo-10',
-    slug: 'o-primeiro-telefonema-depois-de-um-incidente-pode-definir-toda-a-investigacao',
-    title: 'O primeiro telefonema depois de um incidente pode definir toda a investigação',
-    subtitle: 'Ações imediatas, cadeia de custódia e contatos estratégicos nos primeiros 60 minutos de crise.',
-    category: 'Incidentes',
-    tags: ['Resposta a Incidentes', 'Cadeia de Custódia', 'Gestão de Crise', 'Perícia Digital'],
-    summary: 'As decisões tomadas na primeira hora de um vazamento ou sequestro de dados orientam se a crise será contida com precisão forense ou se resultará em caos operacional e vulnerabilidade jurídica.',
-    briefing: 'Explicar cadeia decisória, acionamento, preservação e comunicação.',
-    publishedAt: '2026-07-28',
-    updatedAt: '2026-08-21',
-    readingTimeMinutes: 5,
-    isFeatured: false,
-    isMustRead: true,
-    author: DEFAULT_AUTHOR,
-    content: {
-      oQueAconteceu: 'Ao perceber a mensagem de extorsão, o gerente operacional liga para um técnico de suporte que desliga abruptamente os servidores da tomada, destruindo vestígios valiosos armazenados na memória volátil.',
-      oQueIssoSignifica: 'A reação inicial deve seguir um plano rigoroso de contenção sem destruição de provas, acionando simultaneamente o perito forense, o jurídico e a governança.',
-      porQueIssoImporta: 'O modo de acionamento das partes envolvidas determina a preservação do segredo profissional e do sigilo advogado-cliente (attorney-client privilege) nas investigações.',
-      qualEORisco: 'Destruição involuntária de evidências vitais, pânico organizacional, vazamentos precoces e perda de controle da narrativa pública.',
-      oQueDeveriaTerSidoPreparado: 'Cartão de acionamento de emergência (First Responder Pocket Guide) distribuído aos executivos e plantonistas de tecnologia.',
-      oQueFazerAgora: 'Estabelecer uma linha direta de comunicação segura fora da infraestrutura principal para coordenação durante incidentes.',
-      perguntasParaExecutivos: [
-        'Quem é a primeira pessoa que seu gestor de TI deve ligar ao identificar uma invasão às 2 horas da manhã de um domingo?',
-        'Nossa empresa tem um canal seguro e externo para conversar durante uma indisponibilidade total dos e-mails corporativos?',
-        'O time sabe exatamente o que NÃO fazer nas primeiras 2 horas após a constatação de um desastre cibernético?'
-      ],
-      fontesEReferencias: [
-        { title: 'NIST Computer Security Incident Handling Guide (SP 800-61 Rev. 2)' },
-        { title: 'RFC 3227 - Guidelines for Evidence Collection and Archiving' }
-      ]
-    }
+    category: 'Incidentes, decisões e documentação',
+    categoryId: 'incidentes-doc',
+    format: 'Roteiro de Evidências',
+    level: 'Intermediário / Operacional',
+    readingTime: '6 min de leitura',
+    publishedAt: '2026-09-28',
+    updatedAt: '2026-09-28',
+    primarySource: 'Art. 37º da LGPD (Registro de Operações) + Resolução CD/ANPD nº 2/2022',
+    badgeText: 'Documentação & Governança',
+    author: {
+      name: 'Curadoria Editorial Dados & Privacidade',
+      role: 'Equipe de Governança e Regulamentação',
+      bio: 'Produzido e revisado por especialistas em documentação de conformidade e auditoria de sistemas.'
+    },
+    editor: {
+      name: 'Editoria Técnica',
+      role: 'Dados & Privacidade'
+    },
+    reviewer: {
+      name: 'Revisão de Governança de TI',
+      role: 'Auditoria de Processos'
+    },
+    summaryPoints: [
+      'Na LGPD, a comprovação de boa-fé (accountability) depende da capacidade da empresa de demonstrar como tomou decisões de privacidade.',
+      'O registro das operações de tratamento (ROPA) não precisa ser um documento complexo: para PMEs, um inventário organizado cumpre o requisito legal.',
+      'Documentar treinamentos de funcionários e escolhas de fornecedores é a melhor defesa em caso de questionamento de clientes ou autoridades.'
+    ],
+    whyItMatters: 'Em situações de incidente de segurança ou notificação da ANPD, a diferença entre uma advertência orientativa e uma penalidade severa reside na capacidade da empresa de apresentar registros de que agiu de forma diligente e responsável.',
+    legalContext: 'O Art. 37 da LGPD estabelece que o controlador e o operador devem manter registro das operações de tratamento de dados pessoais que realizarem, especialmente quando baseado no legítimo interesse.',
+    practicalApplication: 'Estruture uma pasta de "Evidências de Privacidade" contendo: registros de consentimento, cópias de treinamentos com lista de presença, contratos com fornecedores e logs de backup.',
+    limitationsAndNotice: 'Este roteiro indica boas práticas de organização documental. A validade jurídica de contratos e termos específicos deve ser avaliada por assessoria jurídica competente.',
+    sources: [
+      {
+        title: 'Lei Geral de Proteção de Dados (Artigo 37)',
+        url: 'https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm',
+        publisher: 'Presidência da República'
+      },
+      {
+        title: 'Resolução CD/ANPD nº 2/2022 (Regulamento de Agentes de Pequeno Porte)',
+        url: 'https://www.gov.br/anpd',
+        publisher: 'ANPD'
+      }
+    ],
+    verificationStatus: 'Fonte Primária Verificada',
+    tags: ['Documentação', 'ROPA', 'Evidências', 'Governança', 'Auditoria'],
+    body: `
+# Que registros ajudam a demonstrar as decisões de proteção de dados?
+
+> **Boneco de Conteúdo / Estrutura Editorial em Preparação**
+> *Este artigo faz parte da trilha sobre Governança, Registros e Prestação de Contas (Accountability).*
+
+---
+
+## 1. O Princípio da Responsabilização e Prestação de Contas
+
+Um dos princípios mais importantes da LGPD (Artigo 6º, X) é a **responsabilização e prestação de contas** (*accountability*). Ele estabelece que a empresa não deve apenas cumprir as normas de privacidade, mas ser capaz de **demonstrar a adoção de medidas eficazes e capazes de comprovar a observância e o cumprimento da lei.**
+
+Na prática: de nada adianta ter excelentes intenções se a empresa não possui registros mínimos que comprovem suas escolhas organizacionais.
+
+---
+
+## 2. Os 5 Registros Essenciais para Pequenas e Médias Empresas
+
+Para manter a governança sem burocracia excessiva, concentre-se na organização destes cinco grupos de evidências:
+
+### 1. Registro das Operações de Tratamento (ROPA Simplificado)
+O documento exigido pelo Art. 37 da LGPD. Para PMEs, trata-se de um mapa descrevendo quais dados são tratados, a finalidade de cada um, os prazos de retenção e as medidas de segurança aplicadas.
+
+### 2. Evidências de Informação e Consentimento
+Quando a base legal utilizada for o consentimento do titular (por exemplo, na assinatura de um boletim de marketing), guarde os registros de data, hora e texto do aviso apresentado ao usuário.
+
+### 3. Registro de Treinamento e Orientações da Equipe
+Guarde apresentações, materiais educativos enviados aos colaboradores e atas ou listas de presença de reuniões sobre privacidade. Isso demonstra que a liderança orientou ativamente seus funcionários.
+
+### 4. Avaliação de Fornecedores e Operadores (Vendor Assessment)
+Contratos ou aditivos firmados com fornecedores de software (CRM, e-mail marketing, nuvem, contabilidade) que contêm cláusulas explícitas de proteção de dados e responsabilidades mútuas.
+
+### 5. Registros Técnicos de Segurança (Logs e Backups)
+Logs de acesso de administradores de sistemas, relatórios periódicos de cópias de segurança (backups) e registros de atualização de softwares e antivírus.
+
+---
+
+## 3. Como Organizar a Pasta de Evidências
+
+Crie um repositório seguro e de acesso restrito (por exemplo, "Governança_LGPD_Empresa") com a seguinte estrutura de pastas:
+
+\`\`\`text
+📁 Governança_LGPD_Empresa/
+├── 📄 01_Inventario_ROPA_Simplificado.xlsx
+├── 📁 02_Políticas_e_Avisos/
+│   ├── Politica_Privacidade_Site_v1.pdf
+│   └── Termos_Atendimento_Cliente.pdf
+├── 📁 03_Treinamentos_e_Equipe/
+│   ├── Ata_Orientacao_Interna_2026.pdf
+│   └── Guia_Boas_Praticas_Funcionarios.pdf
+├── 📁 04_Contratos_Fornecedores/
+│   └── Aditivo_LGPD_Sistema_CRM.pdf
+└── 📁 05_Segurança_e_Backups/
+    └── Relatorio_Mensal_Backups.pdf
+\`\`\`
+
+---
+
+## 4. O Valor do Registro em Casos de Incidentes
+
+Caso ocorra algum questionamento por parte de um cliente ou uma notificação fiscalizatória da ANPD, a capacidade de apresentar essa pasta de evidências organizada comprova a **boa-fé da empresa**. A autoridade considera expressamente a adoção reiterada e demonstrada de mecanismos de governança ao dosar eventuais medidas orientativas ou sanções.
+
+---
+
+## 5. Próximo Passo
+
+Explore o nosso guia sobre **Inventário de Dados e ROPA Simplificado** para baixar a planilha estruturada de registros.
+    `
   }
 ];
 
-
+export const INITIAL_ARTICLES = mockArticles;

@@ -1,34 +1,61 @@
 import React from 'react';
 import { Metadata } from 'next';
+import Link from 'next/link';
+import { FileText, ArrowLeft } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Termos de Uso | perito.tec.br',
-  description: 'Termos e Condições de Uso do portal executivo perito.tec.br.',
+  title: 'Termos de Uso | Dados & Privacidade',
+  description: 'Termos e Condições de Uso do portal dadoseprivacidade.com.br.',
 };
 
-export default function TermsPage() {
+export default function TermsOfUsePage() {
   return (
-    <div className="py-12 md:py-20 bg-paper-100 min-h-screen">
+    <div className="py-12 md:py-20 bg-brand-bg min-h-screen">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-        <h1 className="font-serif text-4xl font-bold text-brand-dark border-b border-paper-300 pb-4">
-          Termos de Uso
-        </h1>
+        
+        <Link 
+          href="/" 
+          className="inline-flex items-center gap-2 text-xs font-semibold text-brand-teal hover:underline"
+        >
+          <ArrowLeft className="w-4 h-4" />
+          Voltar para a página inicial
+        </Link>
 
-        <div className="bg-white p-8 md:p-10 rounded-xl border border-paper-300 shadow-sm space-y-6 text-sm text-gray-700 leading-relaxed">
-          <p>
-            Ao acessar o portal <strong className="text-brand-dark">perito.tec.br</strong>, você concorda com estes Termos de Uso.
-          </p>
-
-          <h2 className="font-serif text-xl font-bold text-brand-dark pt-2">1. Propriedade Intelectual</h2>
-          <p>
-            Todo o conteúdo publicado, incluindo artigos, estudos de caso, análises e marcas, é protegido por direitos autorais. A reprodução sem citação da fonte e autorização prévia é proibida.
-          </p>
-
-          <h2 className="font-serif text-xl font-bold text-brand-dark pt-2">2. Isenção de Responsabilidade Legal</h2>
-          <p>
-            As análises publicadas possuem caráter exclusivamente informativo e educativo para a governança corporativa, não constituindo parecer jurídico formal ou garantia de segurança técnica irrestrita.
+        <div className="border-b border-brand-border pb-6">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-brand-teal-light text-brand-teal mb-3">
+            <FileText className="w-3.5 h-3.5" />
+            Condições Gerais
+          </div>
+          <h1 className="text-3xl md:text-4xl font-extrabold text-brand-navy font-display">
+            Termos de Uso
+          </h1>
+          <p className="text-xs text-slate-500 mt-2">
+            Última atualização: Setembro de 2026 | Domínio: dadoseprivacidade.com.br
           </p>
         </div>
+
+        <div className="bg-white p-8 md:p-10 rounded-2xl border border-slate-200 shadow-card space-y-6 text-sm text-slate-700 leading-relaxed">
+          <h2 className="text-lg font-bold text-brand-navy font-display">1. Natureza do Conteúdo</h2>
+          <p>
+            O portal <strong className="text-brand-navy">Dados & Privacidade</strong> disponibiliza artigos, panoramas e orientações com finalidade estritamente informativa, educativa e de capacitação geral sobre a LGPD (Lei nº 13.709/2018) e o ECA Digital (Lei nº 15.211/2025).
+          </p>
+
+          <h2 className="text-lg font-bold text-brand-navy font-display">2. Limites da Responsabilidade</h2>
+          <p>
+            As publicações não constituem parecer jurídico formal, consultoria técnica personalizada ou garantia de conformidade legal. Cada empresa deve avaliar suas particularidades operacionais e consultar profissionais qualificados para situações específicas.
+          </p>
+
+          <h2 className="text-lg font-bold text-brand-navy font-display">3. Direitos Autorais e Propriedade Intelectual</h2>
+          <p>
+            Os textos e materiais produzidos pelo Dados & Privacidade são protegidos por direitos autorais. É permitida a citação e o compartilhamento de trechos para fins educativos, desde que com os devidos créditos e link para a publicação original.
+          </p>
+
+          <h2 className="text-lg font-bold text-brand-navy font-display">4. Modificações nos Termos</h2>
+          <p>
+            Reservamo-nos o direito de atualizar estes termos periodicamente para refletir alterações legislativas ou melhorias no portal.
+          </p>
+        </div>
+
       </div>
     </div>
   );

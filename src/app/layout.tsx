@@ -1,40 +1,33 @@
-import type { Metadata } from 'next';
 import './globals.css';
-import { Header } from '@/components/layout/Header';
-import { Footer } from '@/components/layout/Footer';
-import { SchemaOrg } from '@/components/ui/SchemaOrg';
+import type { Metadata } from 'next';
+import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
+import CookieBanner from '@/components/ui/CookieBanner';
+import StructuredData from '@/components/seo/StructuredData';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://perito.tec.br'),
-  title: 'Computação Forense e Resiliência Digital | perito.tec.br',
-  description: 'Computação forense, IA, incidentes digitais, LGPD e ECA Digital, fraudes e resiliência explicados para executivos e empresas.',
-  keywords: [
-    'computação forense corporativa',
-    'perícia digital',
-    'forensic readiness',
-    'evidência digital',
-    'investigação digital',
-    'resiliência digital',
-    'resposta a incidentes',
-    'governança de IA',
-    'Shadow AI',
-    'LGPD e ECA Digital',
-    'cyber risk',
-  ],
-  authors: [{ name: 'perito.tec.br' }],
-  creator: 'perito.tec.br',
-  publisher: 'perito.tec.br',
+  title: {
+    default: 'Dados & Privacidade — LGPD e ECA Digital para Pequenas e Médias Empresas',
+    template: '%s | Dados & Privacidade',
+  },
+  description: 'Conhecimento confiável e prático sobre LGPD e ECA Digital para pequenas e médias empresas. Guias, análises e orientações para tomar decisões com segurança.',
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://dadoseprivacidade.com.br'),
+  icons: {
+    icon: '/favicon.svg',
+    shortcut: '/favicon.svg',
+    apple: '/Dados_Privacidade_simbolo.svg',
+  },
   openGraph: {
-    title: 'Computação Forense e Resiliência Digital | perito.tec.br',
-    description: 'Computação forense, IA, incidentes digitais, LGPD e ECA Digital, fraudes e resiliência explicados para executivos e empresas.',
-    url: 'https://perito.tec.br',
-    siteName: 'perito.tec.br',
+    title: 'Dados & Privacidade — LGPD e ECA Digital para PMEs',
+    description: 'Apoio prático e técnico em linguagem clara para gestores, proprietários e equipes aplicarem LGPD e ECA Digital sem alarmismo.',
+    url: 'https://dadoseprivacidade.com.br',
+    siteName: 'Dados & Privacidade',
     images: [
       {
-        url: 'https://perito.tec.br/logo.png',
-        width: 1200,
-        height: 630,
-        alt: 'perito.tec.br - Computação Forense e Resiliência Digital',
+        url: '/Dados_Privacidade_horizontal_vetor.svg',
+        width: 1230,
+        height: 350,
+        alt: 'Dados & Privacidade — Logotipo Oficial',
       },
     ],
     locale: 'pt_BR',
@@ -42,17 +35,13 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Computação Forense e Resiliência Digital | perito.tec.br',
-    description: 'Computação forense, IA, incidentes digitais, LGPD e ECA Digital, fraudes e resiliência explicados para executivos e empresas.',
-    images: ['https://perito.tec.br/logo.png'],
+    title: 'Dados & Privacidade — LGPD e ECA Digital para PMEs',
+    description: 'Conhecimento confiável sobre LGPD e ECA Digital para transformar informação em ações concretas nas empresas.',
+    images: ['/Dados_Privacidade_horizontal_vetor.svg'],
   },
   robots: {
     index: true,
     follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-    },
   },
 };
 
@@ -64,32 +53,33 @@ export default function RootLayout({
   const organizationSchema = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: 'perito.tec.br',
-    url: 'https://perito.tec.br',
-    logo: 'https://perito.tec.br/logo.png',
-    description: 'Plataforma editorial e consultiva especializada em computação forense, resiliência digital, governança de IA e risco cibernético para empresas e conselhos de administração.',
+    name: 'Dados & Privacidade',
+    url: 'https://dadoseprivacidade.com.br',
+    logo: 'https://dadoseprivacidade.com.br/Dados_Privacidade_horizontal_vetor.svg',
+    description: 'Iniciativa independente de informação, curadoria técnica e capacitação sobre LGPD e ECA Digital para PMEs.',
     sameAs: [],
   };
 
   const websiteSchema = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: 'perito.tec.br',
-    url: 'https://perito.tec.br',
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: 'https://perito.tec.br/artigos?q={search_term_string}',
-      'query-input': 'required name=search_term_string',
-    },
+    name: 'Dados & Privacidade',
+    url: 'https://dadoseprivacidade.com.br',
+    inLanguage: 'pt-BR',
   };
 
   return (
-    <html lang="pt-BR" suppressHydrationWarning>
-      <body suppressHydrationWarning className="min-h-screen flex flex-col bg-paper-100 text-brand-dark antialiased selection:bg-brand-red selection:text-white">
-        <SchemaOrg schema={[organizationSchema, websiteSchema]} />
+    <html lang="pt-BR">
+      <head>
+        <StructuredData data={[organizationSchema, websiteSchema]} />
+      </head>
+      <body className="min-h-screen flex flex-col bg-brand-bg text-brand-dark font-sans antialiased selection:bg-brand-teal selection:text-white">
         <Header />
-        <main className="flex-grow">{children}</main>
+        <main className="flex-grow">
+          {children}
+        </main>
         <Footer />
+        <CookieBanner />
       </body>
     </html>
   );

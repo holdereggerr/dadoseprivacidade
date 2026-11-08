@@ -1,29 +1,42 @@
 import React from 'react';
-import { HeroSection } from '@/components/home/HeroSection';
-import { ExecWhatToKnowSection } from '@/components/home/ExecWhatToKnowSection';
-import { ForensicReadinessSection } from '@/components/home/ForensicReadinessSection';
-import { DigitalResilienceSection } from '@/components/home/DigitalResilienceSection';
-import { IAShadowAISection } from '@/components/home/IAShadowAISection';
-import { NewsletterForm } from '@/components/briefing/NewsletterForm';
+import HeroSection from '@/components/home/HeroSection';
+import InstitutionalSection from '@/components/home/InstitutionalSection';
+import EntryPointsSection from '@/components/home/EntryPointsSection';
+import HowItHelpsSection from '@/components/home/HowItHelpsSection';
+import EditorialThemesSection from '@/components/home/EditorialThemesSection';
+import NewsletterFormSection from '@/components/home/NewsletterFormSection';
+import OfferingsRoadmapSection from '@/components/home/OfferingsRoadmapSection';
+import TrustTransparencySection from '@/components/home/TrustTransparencySection';
 
-export default function HomePage() {
+export default function Home() {
   return (
-    <div>
+    <div className="flex flex-col min-h-screen">
+      {/* 1 & 2. HERO */}
       <HeroSection />
-      <ExecWhatToKnowSection />
-      <ForensicReadinessSection />
-      <DigitalResilienceSection />
-      <IAShadowAISection />
 
-      {/* Newsletter Section */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <NewsletterForm
-            title="Inscreva-se no Executive Digital Risk Briefing"
-            subtitle="Receba análises estratégicas direto no seu e-mail corporativo"
-          />
-        </div>
-      </section>
+      {/* 3. APRESENTAÇÃO INSTITUCIONAL */}
+      <InstitutionalSection />
+
+      {/* 4. PORTAS DE ENTRADA */}
+      <EntryPointsSection />
+
+      {/* 5. COMO O PORTAL AJUDA */}
+      <HowItHelpsSection />
+
+      {/* 6. TEMAS EDITORIAIS & CONTEÚDOS */}
+      <EditorialThemesSection />
+
+      {/* Secondary Newsletter Invitation Strip */}
+      <NewsletterFormSection variant="secondary" />
+
+      {/* 8. MATERIAIS E CAPACITAÇÃO */}
+      <OfferingsRoadmapSection />
+
+      {/* 9. CONFIANÇA E TRANSPARÊNCIA */}
+      <TrustTransparencySection />
+
+      {/* 7. NEWSLETTER — CONVERSÃO PRINCIPAL */}
+      <NewsletterFormSection variant="main" />
     </div>
   );
 }

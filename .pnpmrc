@@ -1,0 +1,4 @@
+node-linker=hoisted
+symlink=false
+ignore-scripts=true
+store-dir=C:\Users\holde\.pnpm-store
